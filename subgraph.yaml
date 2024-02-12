@@ -1,0 +1,177 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: EmojiMatchGame
+    network: blast-testnet
+    source:
+      address: "0x35Fa871534e1B452DD9Ef25aD597FD9FBaA6334d"
+      abi: Game
+      startBlock: 1377598
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ScoreUpdated
+        - ClaimReward
+        - RedeemTicket
+        - NewRound
+      abis:
+        - name: Game
+          file: ./abis/Game.json
+      eventHandlers:
+        - event: ScoreUpdated(indexed address,uint256,(uint256,uint256,uint256,uint256,address,bool,uint256),string,(address,uint256,bool)[],uint256)
+          handler: handleScoreUpdated
+        - event: ClaimReward(indexed address,uint256,(uint256,uint256,uint256,uint256,address,bool,uint256),uint256,string)
+          handler: handleClaimReward
+        - event: RedeemTicket(indexed address,uint256,uint256,uint256,string,(uint256,uint256,uint256,uint256,address,bool,uint256))
+          handler: handleRedeemTicket
+        - event: NewRound(indexed uint256,string,(uint256,uint256,uint256,uint256,address,bool,uint256))
+          handler: handleNewRound
+      file: ./src/emoji-match-game.ts
+  - kind: ethereum
+    name: SnowmanDefenderGame
+    network: blast-testnet
+    source:
+      address: "0x1e68ED8a770D439300b6a6Ada4082Dd46174dB2C"
+      abi: Game
+      startBlock: 1377598
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ScoreUpdated
+        - ClaimReward
+        - RedeemTicket
+        - NewRound
+      abis:
+        - name: Game
+          file: ./abis/Game.json
+      eventHandlers:
+        - event: ScoreUpdated(indexed address,uint256,(uint256,uint256,uint256,uint256,address,bool,uint256),string,(address,uint256,bool)[],uint256)
+          handler: handleScoreUpdated
+        - event: ClaimReward(indexed address,uint256,(uint256,uint256,uint256,uint256,address,bool,uint256),uint256,string)
+          handler: handleClaimReward
+        - event: RedeemTicket(indexed address,uint256,uint256,uint256,string,(uint256,uint256,uint256,uint256,address,bool,uint256))
+          handler: handleRedeemTicket
+        - event: NewRound(indexed uint256,string,(uint256,uint256,uint256,uint256,address,bool,uint256))
+          handler: handleNewRound
+      file: ./src/snowman-defender-game.ts
+  - kind: ethereum
+    name: TommyJumpingGame
+    network: blast-testnet
+    source:
+      address: "0xCeB7dA77A08364AD614460E1Fa19782Cf1C6765a"
+      abi: Game
+      startBlock: 1377598
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ScoreUpdated
+        - ClaimReward
+        - RedeemTicket
+        - NewRound
+      abis:
+        - name: Game
+          file: ./abis/Game.json
+      eventHandlers:
+        - event: ScoreUpdated(indexed address,uint256,(uint256,uint256,uint256,uint256,address,bool,uint256),string,(address,uint256,bool)[],uint256)
+          handler: handleScoreUpdated
+        - event: ClaimReward(indexed address,uint256,(uint256,uint256,uint256,uint256,address,bool,uint256),uint256,string)
+          handler: handleClaimReward
+        - event: RedeemTicket(indexed address,uint256,uint256,uint256,string,(uint256,uint256,uint256,uint256,address,bool,uint256))
+          handler: handleRedeemTicket
+        - event: NewRound(indexed uint256,string,(uint256,uint256,uint256,uint256,address,bool,uint256))
+          handler: handleNewRound
+      file: ./src/tommy-jumping-game.ts
+  - kind: ethereum
+    name: EscapeFromGermsGame
+    network: blast-testnet
+    source:
+      address: "0xdC29E420FbaF9c273d84B5a6548a7936a7ccdb9e"
+      abi: Game
+      startBlock: 1377598
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ScoreUpdated
+        - ClaimReward
+        - RedeemTicket
+        - NewRound
+      abis:
+        - name: Game
+          file: ./abis/Game.json
+      eventHandlers:
+        - event: ScoreUpdated(indexed address,uint256,(uint256,uint256,uint256,uint256,address,bool,uint256),string,(address,uint256,bool)[],uint256)
+          handler: handleScoreUpdated
+        - event: ClaimReward(indexed address,uint256,(uint256,uint256,uint256,uint256,address,bool,uint256),uint256,string)
+          handler: handleClaimReward
+        - event: RedeemTicket(indexed address,uint256,uint256,uint256,string,(uint256,uint256,uint256,uint256,address,bool,uint256))
+          handler: handleRedeemTicket
+        - event: NewRound(indexed uint256,string,(uint256,uint256,uint256,uint256,address,bool,uint256))
+          handler: handleNewRound
+      file: ./src/escape-from-germs.ts
+  - kind: ethereum
+    name: Lotto
+    network: blast-testnet
+    source:
+      address: "0xe1087eaE2147563d06f8870469bC022C94233f72"
+      abi: Lotto
+      startBlock: 1377598
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - RandomnessRequested
+        - RandomnessRevealed
+        - Winner
+        - EnterLottoGame
+      abis:
+        - name: Lotto
+          file: ./abis/Lotto.json
+      eventHandlers:
+        - event: RandomnessRequested(uint64,address)
+          handler: handleRandomnessRequested
+        - event: RandomnessRevealed(uint256,address)
+          handler: handleRandomnessRevealed
+        - event: Winner(indexed address,uint256)
+          handler: handleWinner
+        - event: EnterLottoGame(indexed address,uint256)
+          handler: handleEnterLottoGame
+      file: ./src/lotto.ts
+  - kind: ethereum
+    name: GameTicket
+    network: blast-testnet
+    source:
+      address: "0x3c1F70e4af2E1693e89Bed7B24f497d8b0b0dB43"
+      abi: GameTicket
+      startBlock: 1377598
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BuyTicket
+        - AirdropLottoTickets
+        - ClaimLottoTicket
+      abis:
+        - name: GameTicket
+          file: ./abis/GameTicket.json
+      eventHandlers:
+        - event: BuyTicket(indexed address,uint256,uint256,uint256)
+          handler: handleBuyTicket
+        - event: AirdropLottoTickets(address[],uint256[])
+          handler: handleAirdropLottoTickets
+        - event: ClaimLottoTicket(indexed address,uint256,uint256)
+          handler: handleClaimLottoTicket
+      file: ./src/gameTicket.ts

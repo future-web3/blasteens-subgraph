@@ -1,0 +1,131 @@
+type ScoreUpdated @entity(immutable: true) {
+  id: Bytes!
+  round_gameRound: BigInt! # uint256
+  round_end: BigInt! # uint256
+  round_claimPeriod: BigInt! # uint256
+  round_gameLeaderBoard: Bytes! # address
+  round_hasClaimedBySomeone: Boolean! # bool
+  gameId: BigInt! # uint256
+  gameName: String! # string
+  gameLeaderboardInfo: [String!]!
+  user: Bytes! # address
+  score: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ClaimReward @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  totalClaimedPrize: BigInt!
+  round_gameRound: BigInt! # uint256
+  round_end: BigInt! # uint256
+  round_claimPeriod: BigInt! # uint256
+  round_gameLeaderBoard: Bytes! # address
+  round_hasClaimedBySomeone: Boolean! # bool
+  gameId: BigInt! # uint256
+  gameName: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NewRound @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  totalClaimedPrize: BigInt!
+  round_gameRound: BigInt! # uint256
+  round_end: BigInt! # uint256
+  round_claimPeriod: BigInt! # uint256
+  round_gameLeaderBoard: Bytes! # address
+  round_hasClaimedBySomeone: Boolean! # bool
+  gameId: BigInt! # uint256
+  gameName: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RedeemTicket @entity(immutable: true) {
+  id: Bytes!
+  player: Bytes!
+  ticketType: BigInt!
+  ticketPrice: BigInt!
+  gameId: BigInt!
+  gameName: String!
+  round_gameRound: BigInt! # uint256
+  round_end: BigInt! # uint256
+  round_claimPeriod: BigInt! # uint256
+  round_gameLeaderBoard: Bytes! # address
+  round_hasClaimedBySomeone: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RandomnessRequested @entity(immutable: true) {
+  id: Bytes!
+  sequenceNumber: BigInt! # uint64
+  requester: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RandomnessRevealed @entity(immutable: true) {
+  id: Bytes!
+  randomNumber: BigInt! # uint256
+  revealer: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Winner @entity(immutable: true) {
+  id: Bytes!
+  winner: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EnterLottoGame @entity(immutable: true) {
+  id: Bytes!
+  participant: Bytes! # address
+  number: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BuyTicket @entity(immutable: true) {
+  id: Bytes!
+  buyer: Bytes! # address
+  ticketType: BigInt! # uint256
+  ticketNumber: BigInt!
+  amount: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AirdropLottoTickets @entity(immutable: true) {
+  id: Bytes!
+  players: [String!]! # address
+  numberOfTickets: [BigInt!]! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ClaimLottoTicket @entity(immutable: true) {
+  id: Bytes!
+  claimer: Bytes! # address
+  ticketType: BigInt! # uint256
+  number: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

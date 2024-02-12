@@ -1,0 +1,23 @@
+{
+  "blast-testnet": {
+    "Lotto": {
+      "address": "0xe1087eaE2147563d06f8870469bC022C94233f72",
+      "startBlock": 1377598
+    },
+    "EmojiMatchGame": {
+      "address": "0x35Fa871534e1B452DD9Ef25aD597FD9FBaA6334d"
+    },
+    "SnowmanDefenderGame": {
+      "address": "0x1e68ED8a770D439300b6a6Ada4082Dd46174dB2C"
+    },
+    "TommyJumpingGame": {
+      "address": "0xCeB7dA77A08364AD614460E1Fa19782Cf1C6765a"
+    },
+    "EscapeFromGermsGame": {
+      "address": "0xdC29E420FbaF9c273d84B5a6548a7936a7ccdb9e"
+    },
+    "GameTicket": {
+      "address": "0x3c1F70e4af2E1693e89Bed7B24f497d8b0b0dB43"
+    }
+  }
+}
