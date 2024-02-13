@@ -6,42 +6,150 @@ The Blasteens Contracts upholds fairness within the community, with its transpar
 <br><br>
 
 > Want to know more? <br>
-> 👉 [Blasteens' READMD.md](https://github.com/future-web3/blasteens-ui) 👈
+> 👉 [Blasteens' README.md](https://github.com/future-web3/blasteens-ui) 👈
 
 > Be more comfy watching an intro video?<br>
-> 👉 [Blasteens' Youtube Video](url) 👈
+> 👉 [What is Blasteens?](url) 👈
 
 ## Table of Contents
-* [Features](#features)
-* [Tech Stack](#tech-stack)
-* [Contract Addresses](#contract-addresses)
+* [Schema](#schema)
 * [How to Contribute?](#how-to-contribute)
 * [License](#license)
 * [Developed By](#developed-by)
 
-## Features:
- - Utilised all the blast l2 features including yield claim, gas claim etc.
- - Utilised pyth VRF to get randomness for Lotto Draw.
- - Utilised various of other solidity patterns such as factory etc..
+## Schema:
+```typescript
+type ScoreUpdated @entity(immutable: true) {
+  id: Bytes!
+  round_gameRound: BigInt! # uint256
+  round_end: BigInt! # uint256
+  round_claimPeriod: BigInt! # uint256
+  round_gameLeaderBoard: Bytes! # address
+  round_hasClaimedBySomeone: Boolean! # bool
+  gameId: BigInt! # uint256
+  gameName: String! # string
+  gameLeaderboardInfo: [String!]!
+  user: Bytes! # address
+  score: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
 
-## Tech Stack
- - Blast yield mechanism.
- - Blast gas mechanism.
- - Pyth VRF.
- - Subgraph on blast.
- - Foundry as the dev framework.
+type ClaimReward @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  totalClaimedPrize: BigInt!
+  round_gameRound: BigInt! # uint256
+  round_end: BigInt! # uint256
+  round_claimPeriod: BigInt! # uint256
+  round_gameLeaderBoard: Bytes! # address
+  round_hasClaimedBySomeone: Boolean! # bool
+  gameId: BigInt! # uint256
+  gameName: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
 
-## Contract Addresses:
-```javascript
-gameTicketContract: '0x3c1F70e4af2E1693e89Bed7B24f497d8b0b0dB43',
-gameContract: {
-      escapeFromGerms: '0xdC29E420FbaF9c273d84B5a6548a7936a7ccdb9e',
-      tommyJumping: '0xCeB7dA77A08364AD614460E1Fa19782Cf1C6765a',
-      snowmanDefender: '0x1e68ED8a770D439300b6a6Ada4082Dd46174dB2C',
-      emojiMatch: '0x35Fa871534e1B452DD9Ef25aD597FD9FBaA6334d'
-},
-forwarderContract: '0xB6A87320DE35F2bEFE2258162360daa3de11C788',
-lottoContract: '0xe1087eaE2147563d06f8870469bC022C94233f72',
+type NewRound @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  totalClaimedPrize: BigInt!
+  round_gameRound: BigInt! # uint256
+  round_end: BigInt! # uint256
+  round_claimPeriod: BigInt! # uint256
+  round_gameLeaderBoard: Bytes! # address
+  round_hasClaimedBySomeone: Boolean! # bool
+  gameId: BigInt! # uint256
+  gameName: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RedeemTicket @entity(immutable: true) {
+  id: Bytes!
+  player: Bytes!
+  ticketType: BigInt!
+  ticketPrice: BigInt!
+  gameId: BigInt!
+  gameName: String!
+  round_gameRound: BigInt! # uint256
+  round_end: BigInt! # uint256
+  round_claimPeriod: BigInt! # uint256
+  round_gameLeaderBoard: Bytes! # address
+  round_hasClaimedBySomeone: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RandomnessRequested @entity(immutable: true) {
+  id: Bytes!
+  sequenceNumber: BigInt! # uint64
+  requester: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RandomnessRevealed @entity(immutable: true) {
+  id: Bytes!
+  randomNumber: BigInt! # uint256
+  revealer: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Winner @entity(immutable: true) {
+  id: Bytes!
+  winner: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EnterLottoGame @entity(immutable: true) {
+  id: Bytes!
+  participant: Bytes! # address
+  number: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BuyTicket @entity(immutable: true) {
+  id: Bytes!
+  buyer: Bytes! # address
+  ticketType: BigInt! # uint256
+  ticketNumber: BigInt!
+  amount: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AirdropLottoTickets @entity(immutable: true) {
+  id: Bytes!
+  players: [String!]! # address
+  numberOfTickets: [BigInt!]! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ClaimLottoTicket @entity(immutable: true) {
+  id: Bytes!
+  claimer: Bytes! # address
+  ticketType: BigInt! # uint256
+  number: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
 
 ```
 
