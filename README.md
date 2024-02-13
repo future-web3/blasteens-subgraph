@@ -2,7 +2,7 @@
 <p align="center">
   <img alt="Blasteens" src="public/images/blasteens.png" width="500" >
 </p>
-The Blasteens Contracts upholds fairness within the community, with its transparency ensuring that both gamers and developers reap benefits. This includes visibility into the prize reward system, lotto system, and rewards for developers, all of which are essential for enhancing the ecosystem. The details of any contract are openly accessible to everyone.
+A subgraph, tailored for the Blasteens platform, is a custom API designed to interact with blockchain data. It employs the GraphQL query language for data requests and utilizes the Graph CLI for deployment to a Graph Node. After deployment, when published on The Graph's decentralized network, Indexers process these subgraphs, enabling them to be accessible for queries by Blasteens' subgraph consumers.
 <br><br>
 
 > Want to know more? <br>
