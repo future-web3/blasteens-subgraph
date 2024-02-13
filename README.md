@@ -13,7 +13,7 @@ A subgraph, tailored for the Blasteens platform, is a custom API designed to int
 
 ## Table of Contents
 * [Schema](#schema)
-* [How to Contribute?](#how-to-contribute)
+* [How to contribute?](#how-to-contribute)
 * [License](#license)
 * [Developed By](#developed-by)
 
@@ -153,7 +153,7 @@ type ClaimLottoTicket @entity(immutable: true) {
 
 ```
 
-## How to contribute
+## How to contribute?
 We warmly invite developers of all skill levels to contribute to our open-source project, whether through code, documentation, or community support, to help us build something truly amazing together.
 
 ## License
